@@ -15,7 +15,7 @@
 
 import resource
 import sys
-sys.path.append('../src/models')
+sys.path.append('/spacenet/src/models')
 
 from segmentation_cpu import SegmentationModel as Model
 from os import path

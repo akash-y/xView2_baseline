@@ -57,14 +57,14 @@ def ordinal_loss(y_true, y_pred):
 ###
 def generate_xBD_baseline_model():
   weights = 'imagenet'
-  inputs = Input(shape=(128, 128, 3))
+  inputs = Input(shape=(256, 256, 3))
 
-  base_model = ResNet50(include_top=False, weights=weights, input_shape=(128, 128, 3))
+  base_model = ResNet50(include_top=False, weights=weights, input_shape=(256, 256, 3))
 
   for layer in base_model.layers:
     layer.trainable = False
 
-  x = Conv2D(32, (5, 5), strides=(1, 1), padding='same', activation='relu', input_shape=(128, 128, 3))(inputs)
+  x = Conv2D(32, (5, 5), strides=(1, 1), padding='same', activation='relu', input_shape=(256, 256, 3))(inputs)
   x = MaxPooling2D(pool_size=(2, 2), strides=None, padding='valid', data_format=None)(x)
 
   x = Conv2D(64, (3, 3), strides=(1, 1), padding='same', activation='relu')(x)
